@@ -24,18 +24,15 @@ for i in song:
             russian_artists.append(i[1])
             count_rus_letters += 1
             break
-    if count_rus_letters == 0:
+    if count_rus_letters == 0 and i[1] != 'unknown':
         foreign_artists.append(i[1])
-
 print(f'Количество российских исполнителей: {len(russian_artists)}')
 print(f'Количество иностранных исполнителей: {len(foreign_artists)}')
 
 with open('russian_artists.txt', 'w', encoding='utf-8') as data_file:
-    russian_writer = writer(data_file)
     for i in russian_artists:
-        russian_writer.writerow(i)
+        data_file.write(i + '\n')
 
 with open('foreign_artists.txt', 'w', encoding='utf-8') as data_file:
-    foreign_writer = writer(data_file)
     for i in foreign_artists:
-        foreign_writer.writerow(i)
+        data_file.write(i + '\n')
